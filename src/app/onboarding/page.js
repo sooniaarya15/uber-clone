@@ -37,7 +37,7 @@ export default function Onboarding() {
 
   return (
     <div className="mx-auto max-w-md p-6">
-      <h1 className="mb-6 text-2xl font-bold">Aap kaun ho?</h1>
+      <h1 className="mb-6 text-2xl font-bold">Who are you?</h1>
 
       <div className="mb-6 grid grid-cols-2 gap-4">
         {["rider", "driver"].map((r) => (
