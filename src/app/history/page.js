@@ -18,7 +18,7 @@ export default async function History() {
   return (
     <div className="mx-auto max-w-3xl space-y-4 p-4 sm:p-6">
       <h1 className="text-2xl font-bold">Ride History</h1>
-      {!rides?.length && <p className="text-gray-500">Abhi tak koi ride nahi.</p>}
+      {!rides?.length && <p className="text-gray-500">No rides yet.</p>}
 
       {rides?.map((r) => {
         const paid = r.payments?.[0]?.status === "paid";

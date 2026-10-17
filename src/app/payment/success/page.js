@@ -22,7 +22,7 @@ export default async function Success({ searchParams }) {
           .update({ status: "paid", stripe_payment_id: session.payment_intent })
           .eq("ride_id", rideId).eq("status", "pending").select();
 
-        if (updated?.length) await sendReceipt(user.email, ride); // sirf pehli baar
+        if (updated?.length) await sendReceipt(user.email, ride);
         ok = true;
       }
     } catch (e) {
@@ -32,9 +32,9 @@ export default async function Success({ searchParams }) {
 
   return (
     <div className="mx-auto max-w-md p-10 text-center">
-      <h1 className="text-2xl font-bold">{ok ? "Payment successful ✅" : "Payment verify nahi hui"}</h1>
+      <h1 className="text-2xl font-bold">{ok ? "Payment successful ✅" : "Payment not successful"}</h1>
       <Link href="/history" className="mt-6 inline-block rounded bg-black px-6 py-3 text-white">
-        Ride history dekho
+        See Ride history 
       </Link>
     </div>
   );

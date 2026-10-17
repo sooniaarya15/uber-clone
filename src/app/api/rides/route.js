@@ -55,7 +55,6 @@ export async function GET(req) {
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
 
-  // Driver ki live location + rating attach karo
   const ids = [...new Set((rides || []).map((r) => r.driver_id).filter(Boolean))];
   let infoMap = {};
   if (ids.length) {

@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { supabaseAdmin } from "@/lib/supabase";
 
-// GET: current user ka DB record
 export async function GET() {
   const { userId } = await auth();
   if (!userId) {
