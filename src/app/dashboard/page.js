@@ -9,7 +9,9 @@ export default async function Dashboard() {
 
   return (
     <div className="mx-auto max-w-5xl p-4 sm:p-6">
-      <h1 className="text-2xl font-bold">Welcome, {user.full_name || "User"} 👋</h1>
+      <h1 className="text-2xl font-bold">
+        Welcome, {user.full_name || user.email?.split("@")[0] || "Friend"} 👋
+      </h1>
       <p className="mb-6 text-gray-600">
         Role: <span className="font-semibold capitalize">{user.role}</span>
       </p>

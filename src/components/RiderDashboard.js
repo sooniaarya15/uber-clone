@@ -1,7 +1,8 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import usePolling from "./usePolling";
-import RideBooking from "./RideBooking";
+// import RideBooking from "./RideBooking";
+import RideBooking from "./RideBookingManual";
 import { haversine } from "@/lib/geo";
 
 const MESSAGES = {
@@ -19,7 +20,6 @@ export default function RiderDashboard() {
     rides.find((r) => ["requested", "accepted", "in_progress"].includes(r.status)) ||
     rides.find((r) => r.status === "completed" && r.payments?.[0]?.status !== "paid");
 
-  // In-app notification: status badalte hi banner dikhao
   const prev = useRef({});
   const [toast, setToast] = useState("");
   useEffect(() => {
@@ -44,22 +44,33 @@ export default function RiderDashboard() {
     reload();
   }
 
+  // async function pay(id) {
+  //   const res = await fetch("/api/payments/checkout", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ rideId: id }),
+  //   });
+  //   const d = await res.json();
+  //   if (d.url) window.location.href = d.url;
+  //   else alert(d.error);
+  // }
+
   async function pay(id) {
-    const res = await fetch("/api/payments/checkout", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ rideId: id }),
-    });
-    const d = await res.json();
-    if (d.url) window.location.href = d.url;
-    else alert(d.error);
-  }
+  const res = await fetch("/api/payments/mock", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ rideId: id }),
+  });
+  const d = await res.json();
+  if (res.ok) reload();
+  else alert(d.error);
+}
 
   const di = active?.driver_info;
   let eta = null;
   if (active?.status === "accepted" && di?.current_lat != null) {
     const km = haversine(di.current_lat, di.current_lng, active.pickup_lat, active.pickup_lng);
-    eta = Math.max(1, Math.round((km / 25) * 60)); // ~25 km/h ke hisaab se
+    eta = Math.max(1, Math.round((km / 25) * 60)); 
   }
 
   return (
@@ -85,7 +96,7 @@ export default function RiderDashboard() {
               {di?.current_lat != null && active.status !== "completed" && (
                 <a className="text-blue-600 underline" target="_blank"
                   href={`https://www.google.com/maps?q=${di.current_lat},${di.current_lng}`}>
-                  Driver ki live location dekho
+                  See live location of driver 
                 </a>
               )}
             </div>

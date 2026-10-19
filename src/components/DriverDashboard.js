@@ -94,9 +94,9 @@ export default function DriverDashboard() {
       ) : (
         <div className="space-y-3">
           <h2 className="text-lg font-semibold">Ride requests</h2>
-          {!online && <p className="text-gray-500">Requests dekhne ke liye online ho jao.</p>}
+          {!online && <p className="text-gray-500">Go online to see ride requests.</p>}
           {online && !(avail?.rides?.length) && (
-            <p className="text-gray-500">Abhi koi request nahi hai...</p>
+            <p className="text-gray-500">No requests right now...</p>
           )}
           {avail?.rides?.map((r) => (
             <div key={r.id} className="rounded-lg bg-white p-4 shadow">

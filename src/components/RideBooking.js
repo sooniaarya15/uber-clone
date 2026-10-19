@@ -47,7 +47,7 @@ export default function RideBooking({ onBooked }) {
           setKm(res.routes[0].legs[0].distance.value / 1000);
           setErr("");
         } else {
-          setErr("Route nahi mila: " + status);
+          setErr("Route not found: " + status);
         }
       }
     );

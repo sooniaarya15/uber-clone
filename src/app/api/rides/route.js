@@ -40,7 +40,7 @@ export async function GET(req) {
             ? haversine(d.current_lat, d.current_lng, r.pickup_lat, r.pickup_lng)
             : null,
       }))
-      .filter((r) => r.pickup_distance_km == null || r.pickup_distance_km <= 10);
+      .filter((r) => r.pickup_distance_km == null || r.pickup_distance_km <= 100000);
 
     return NextResponse.json({ rides: nearby });
   }
