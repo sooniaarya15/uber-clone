@@ -42,7 +42,7 @@ export async function PATCH(req, { params }) {
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   if (!data)
-    return NextResponse.json({ error: "Ride ka status badal chuka hai" }, { status: 409 });
+    return NextResponse.json({ error: "Ride status has already changed" }, { status: 409 });
 
   if (action === "complete") {
     await supabaseAdmin.from("payments").insert({ ride_id: id, amount: ride.fare });

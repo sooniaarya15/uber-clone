@@ -32,9 +32,9 @@ export default async function Success({ searchParams }) {
 
   return (
     <div className="mx-auto max-w-md p-10 text-center">
-      <h1 className="text-2xl font-bold">{ok ? "Payment successful ✅" : "Payment not successful"}</h1>
+      <h1 className="text-2xl font-bold">{ok ? "Payment successful ✅" : "Payment not verified"}</h1>
       <Link href="/history" className="mt-6 inline-block rounded bg-black px-6 py-3 text-white">
-        See Ride history 
+        View Ride history 
       </Link>
     </div>
   );

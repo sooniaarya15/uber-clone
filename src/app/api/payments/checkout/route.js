@@ -14,7 +14,7 @@ export async function POST(req) {
   if (!ride || ride.rider_id !== user.id)
     return NextResponse.json({ error: "Ride not found" }, { status: 404 });
   if (ride.status !== "completed")
-    return NextResponse.json({ error: "Ride abhi complete nahi hui" }, { status: 400 });
+    return NextResponse.json({ error: "Ride is not completed yet" }, { status: 400 });
   if (ride.payments?.[0]?.status === "paid")
     return NextResponse.json({ error: "Already paid" }, { status: 400 });
 

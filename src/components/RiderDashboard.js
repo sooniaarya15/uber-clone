@@ -6,11 +6,11 @@ import RideBooking from "./RideBookingManual";
 import { haversine } from "@/lib/geo";
 
 const MESSAGES = {
-  requested: "Driver dhundha ja raha hai...",
-  accepted: "🚗 Driver mil gaya, wo aa raha hai!",
-  in_progress: "▶️ Ride shuru ho gayi.",
-  completed: "🏁 Ride complete! Ab payment karo.",
-  cancelled: "❌ Ride cancel ho gayi.",
+  requested: "Looking for a driver...",
+  accepted: "🚗 Driver found, they are on the way!",
+  in_progress: "▶️ Your ride has started.",
+  completed: "🏁 Ride complete! Please pay now.",
+  cancelled: "❌ Ride cancelled.",
 };
 
 export default function RiderDashboard() {
@@ -40,7 +40,7 @@ export default function RiderDashboard() {
       body: JSON.stringify({ action: "cancel" }),
     });
     const d = await res.json();
-    if (res.ok && d.cancel_fee) alert(`Driver assign ho chuka tha, cancellation fee ₹${d.cancel_fee} lag sakti hai.`);
+    if (res.ok && d.cancel_fee) alert(`A driver was already assigned, so a cancellation fee of ₹${d.cancel_fee} may apply.`);
     reload();
   }
 

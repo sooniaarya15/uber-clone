@@ -13,7 +13,7 @@ export default async function ProfilePage() {
         <img src={user.avatar_url} alt="avatar" className="mb-4 h-20 w-20 rounded-full" />
       )}
       <p className="mb-4 text-sm text-gray-500">
-        Photo badalne ke liye upar navbar me profile icon → Manage account.
+        To change your photo, click the profile icon in the navbar → Manage account.
       </p>
       <ProfileForm user={user} />
     </div>
